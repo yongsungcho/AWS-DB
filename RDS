@@ -1,0 +1,26 @@
+AWS의 데이터베이스, RDS (Relational Database Service)
+
+1. 정의
+  - RDS를 사용하면 클라우드에서 관계형 DB를 간편하게 설정, 운영 및 확장할 수 있음.
+  - 소모적인 관리 작업을 자동화하면서 비용 효율적이고, 크기 조정 가능한 용량을 제공함.
+  
+2. Architecture
+  - RDS는 내부적으로 EC2 & EBS를 사용함
+  - AWS Cloud > VPC > Instance(EC2) & EBS
+  
+3. 특징
+  1) 관계형 데이터베이스를 제공하는 서비스
+    - Relational Database Service (RDS: 관계형 데이터베이스)
+    - <-> NoSql(DynamoDB, DocumentDB, ElasticCache)과 대비되는 개념
+    - 관계형: DB안에 내용이 정형화되어있고, 테이블간 관계를 중점적으로 보는 DB
+  2) 가상 머신(EC2) 위에서 동작
+    - 단, 직접 시스템에 직접 로그인 불가능 -> OS패치, 관리 등은 AWS의 역할
+  3) RDS는 Serverless 서비스가 아님
+    - 단, Aurora Serverless는 말 그대로 Serverless 서비스
+  4) CloudWatch와 연동
+    - DB 인스턴스의 모니터링(EC2와 동일)
+    - DB에서 발생하는 여러 로그(Error log, General log 등)을 CloudWatch와 연동하여 확인 가능
+  5) 내부에서는 EC2를 활용
+    - VPC안에서 동작
+        1) 기본적으로 public IP를 부여하지 않아, 외부에서 접근 불가능
+        2) 설정에 따라 public으로 오픈 가능(DNS로 접근)
